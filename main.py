@@ -10,18 +10,21 @@ class OutlierDetection:
     def __init__(self):
         sns.set_theme()
         self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 4,cluster_std = 1.5, random_state = 4)
-        print(self.X[0])
+        #print(self.X)
         output = self.main()
-        print(self.X[output[1][0][1]], self.X[output[1][0][2]])
-        print(  pow( pow(self.X[output[1][0][1]][0]-self.X[output[1][0][2]][0],2) +  pow(self.X[output[1][0][1]][1]-self.X[output[1][0][2]][1],2)  , .5) )
+        #print(output)
+        arr = []
+        for x in range(len(output)):
+            arr += [[self.X[output[x][1]],self.X[output[x][2]]]]
 
+        print(arr)
         self.printer()
         self.boxplot()
 
     def main(self):
         nn = NearestNeighbors(n_neighbors=3)
         nn.fit(self.X)
-        knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
+        dist, knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
         return knn
 
     def printer(self):
