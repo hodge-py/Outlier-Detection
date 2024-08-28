@@ -11,7 +11,7 @@ class OutlierDetection:
     def __init__(self):
         sns.set_theme()
         self.outliers = []
-        self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 3,cluster_std = 2, random_state = 2)
+        self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
         self.X = self.X + 20
         # self.X = np.log(self.X)
 
@@ -25,18 +25,18 @@ class OutlierDetection:
 
     def main(self):
         nn = NearestNeighbors(n_neighbors=5)
-        nn.fit(self.X,self.y)
+        nn.fit(self.X, self.y)
         dist, knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
         return knn, dist
 
-    def printer(self,dist):
+    def printer(self, dist):
         self.outliers = np.array(self.outliers)
-        plt.subplot(1,2,1)
-        plt.scatter(self.X[:,0],self.X[:,1])
-        plt.scatter(self.outliers[:,0],self.outliers[:,1])
-        plt.subplot(1,2,2)
+        plt.subplot(1, 2, 1)
+        plt.scatter(self.X[:, 0], self.X[:, 1])
+        plt.scatter(self.outliers[:, 0], self.outliers[:, 1])
+        plt.subplot(1, 2, 2)
         # plt.hist(self.X[:,0],bins=10)
-        plt.boxplot(dist,vert=True)
+        plt.boxplot(dist, vert=True)
         plt.show()
 
     def boxplot(self, dist):
@@ -44,14 +44,14 @@ class OutlierDetection:
 
         upperL = percent[2] + 1.5 * (percent[2] - percent[0])
         lowerL = percent[0] - 1.5 * (percent[2] - percent[0])
-        print(upperL,lowerL)
+        print(upperL, lowerL)
         for x in range(len(dist)):
             if dist[x] > upperL:
                 self.outliers += [self.X[x]]
             elif dist[x] < lowerL:
                 self.outliers += [self.X[x]]
 
-    def generateArr(self,oriDist):
+    def generateArr(self, oriDist):
         arr = []
         for x in range(len(oriDist)):  # finds the distance away from that point (index 0)
             total = 0
@@ -62,5 +62,6 @@ class OutlierDetection:
             arr += [total]
 
         return arr
+
 
 outcome = OutlierDetection()
