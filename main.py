@@ -14,7 +14,7 @@ class OutlierDetection:
         output, dist = self.main()
         print(dist)
         arr = []
-        for x in range(len(dist)):
+        for x in range(len(dist)):  # finds the distance away from that point (index 0)
             arr += [dist[x][0]+dist[x][1]+dist[x][2]]
         print(arr)
         self.printer(arr)
@@ -33,7 +33,7 @@ class OutlierDetection:
 
     def boxplot(self, dist):
         percent = np.quantile(dist, [.25, .50, .75])
-        #print(percent)
+
         upperL = percent[2] + 1.5 * (percent[2] - percent[1])
         lowerL = percent[0] - 1.5 * (percent[1] - percent[0])
         print(len(dist))
