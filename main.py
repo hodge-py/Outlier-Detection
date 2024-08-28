@@ -10,12 +10,13 @@ class OutlierDetection:
 
     def __init__(self):
         sns.set_theme()
-        self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 3,cluster_std = 2, random_state = 4)
+        self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 3,cluster_std = 2, random_state = 2)
         output, dist = self.main()
         print(dist)
         arr = []
         for x in range(len(dist)):  # finds the distance away from that point (index 0)
-            arr += [dist[x][0]+dist[x][1]+dist[x][2]]
+            #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
+            arr += [dist[x][0] + dist[x][1] + dist[x][2]]
         print(arr)
         self.printer(arr)
         self.boxplot(arr)
@@ -36,7 +37,7 @@ class OutlierDetection:
 
         upperL = percent[2] + 1.5 * (percent[2] - percent[1])
         lowerL = percent[0] - 1.5 * (percent[1] - percent[0])
-        print(len(dist))
+        print(upperL,lowerL)
         for x in range(len(dist)):
             if dist[x] > upperL:
                 print(self.X[x])
