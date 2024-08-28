@@ -31,7 +31,7 @@ class OutlierDetection:
         self.printer(arr)
 
     def main(self):
-        nn = NearestNeighbors(n_neighbors=5)
+        nn = NearestNeighbors(n_neighbors=10)
         nn.fit(self.X, self.y)
         dist, knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
         return knn, dist
