@@ -13,7 +13,7 @@ class OutlierDetection:
         self.outliers = []
         self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 3,cluster_std = 2, random_state = 2)
         self.X = self.X + 20
-        #self.X = np.log(self.X)
+        # self.X = np.log(self.X)
 
         output, dist = self.main()
 
@@ -35,7 +35,7 @@ class OutlierDetection:
         plt.scatter(self.X[:,0],self.X[:,1])
         plt.scatter(self.outliers[:,0],self.outliers[:,1])
         plt.subplot(1,2,2)
-        #plt.hist(self.X[:,0],bins=10)
+        # plt.hist(self.X[:,0],bins=10)
         plt.boxplot(dist,vert=True)
         plt.show()
 
@@ -56,7 +56,7 @@ class OutlierDetection:
         for x in range(len(oriDist)):  # finds the distance away from that point (index 0)
             total = 0
             for y in range(len(oriDist[x])):
-                #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
+                # arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
                 total += oriDist[x][y]
 
             arr += [total]
