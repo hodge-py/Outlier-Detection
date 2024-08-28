@@ -10,30 +10,26 @@ class OutlierDetection:
 
     def __init__(self):
         sns.set_theme()
+        self.outliers = []
         self.X, self.y = make_blobs(n_samples = 50, n_features = 2, centers = 3,cluster_std = 2, random_state = 2)
         output, dist = self.main()
-        print(dist)
-        arr = []
-        for x in range(len(dist)):  # finds the distance away from that point (index 0)
-            total = 0
-            for y in range(len(dist[x])):
-                #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
-                total += dist[x][y]
 
-            arr += [total]
+        arr = self.generateArr(dist)
 
         print(arr)
-        self.printer(arr)
         self.boxplot(arr)
+        self.printer(arr)
 
     def main(self):
         nn = NearestNeighbors(n_neighbors=5)
         nn.fit(self.X,self.y)
         dist, knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
-        return knn,dist
+        return knn, dist
 
     def printer(self,dist):
+        self.outliers = np.array(self.outliers)
         plt.scatter(self.X[:,0],self.X[:,1])
+        plt.scatter(self.outliers[:,0],self.outliers[:,1])
         #plt.hist(self.X[:,0],bins=10)
         #plt.boxplot(dist,vert=False)
         plt.show()
@@ -46,10 +42,20 @@ class OutlierDetection:
         print(upperL,lowerL)
         for x in range(len(dist)):
             if dist[x] > upperL:
-                print(self.X[x])
+                self.outliers += [self.X[x]]
             elif dist[x] < lowerL:
-                print(self.X[x])
+                self.outliers += [self.X[x]]
 
+    def generateArr(self,oriDist):
+        arr = []
+        for x in range(len(oriDist)):  # finds the distance away from that point (index 0)
+            total = 0
+            for y in range(len(oriDist[x])):
+                #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
+                total += oriDist[x][y]
 
+            arr += [total]
+
+        return arr
 
 outcome = OutlierDetection()
