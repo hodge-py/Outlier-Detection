@@ -15,21 +15,27 @@ class OutlierDetection:
         print(dist)
         arr = []
         for x in range(len(dist)):  # finds the distance away from that point (index 0)
-            #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
-            arr += [dist[x][0] + dist[x][1] + dist[x][2]]
+            total = 0
+            for y in range(len(dist[x])):
+                #arr += [dist[x][0]+(dist[x][1]+dist[x][2])/2]
+                total += dist[x][y]
+
+            arr += [total]
+
         print(arr)
         self.printer(arr)
         self.boxplot(arr)
 
     def main(self):
-        nn = NearestNeighbors(n_neighbors=3)
+        nn = NearestNeighbors(n_neighbors=5)
         nn.fit(self.X,self.y)
         dist, knn = nn.kneighbors(self.X)  # returns 3 index neighbors including self
         return knn,dist
 
     def printer(self,dist):
         plt.scatter(self.X[:,0],self.X[:,1])
-        #plt.boxplot(dist)
+        #plt.hist(self.X[:,0],bins=10)
+        #plt.boxplot(dist,vert=False)
         plt.show()
 
     def boxplot(self, dist):
