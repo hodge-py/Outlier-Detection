@@ -42,7 +42,7 @@ class OutlierDetection:
         plt.scatter(self.X[:, 0], self.X[:, 1])
         plt.scatter(self.outliers[:, 0], self.outliers[:, 1])
         plt.subplot(1, 2, 2)
-        # plt.hist(self.X[:,0],bins=10)
+        #plt.hist(self.X[:,0],bins=15)
         plt.boxplot(dist, vert=True)
         plt.show()
 
