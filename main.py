@@ -3,6 +3,7 @@ from sklearn.neighbors import NearestNeighbors
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
+import pandas as pd
 import math
 
 
@@ -11,8 +12,14 @@ class OutlierDetection:
     def __init__(self):
         sns.set_theme()
         self.outliers = []
+        """
         self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
         self.X = self.X + 20
+        """
+        df = pd.read_csv('Iris_with_outliers.csv')
+        df = df.dropna()
+        self.X = df.iloc[:, 2:4].values
+        self.y = df.iloc[:, 6].values
         # self.X = np.log(self.X)
 
         output, dist = self.main()
