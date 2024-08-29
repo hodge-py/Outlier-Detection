@@ -7,15 +7,19 @@ import pandas as pd
 
 class OutlierDetection:
 
-    def __init__(self):
+    def __init__(self,dataPath,X1,X2,y_columns):
         self.outliers = []
+        self.x1Column = X1
+        self.x2Column = X2
+        self.y_columns = y_columns
         """
         self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
         self.X = self.X + 20
         """
 
-        self.X, self.y = self.datasetSetup()
-
+        self.X, self.y, self.df = self.datasetSetup(dataPath)
+        self.y = pd.get_dummies(self.df["Species"],dtype=int)
+        self.y = np.array(self.y)
         output, dist = self.main()
 
         arr = self.generateArr(dist)
@@ -24,12 +28,12 @@ class OutlierDetection:
         self.boxplot(arr)
         self.printer(arr)
 
-    def datasetSetup(self):
-        df = pd.read_csv('Iris_with_outliers.csv')
+    def datasetSetup(self,data):
+        df = pd.read_csv(data)
         df = df.dropna()
-        X = df.iloc[:, 2:4].values
-        y = df.iloc[:, 6].values
-        return X, y
+        X = df.iloc[:, self.x1Column:self.x2Column].values
+        y = df.iloc[:, self.y_columns].values
+        return X, y, df
 
     def main(self):
         nn = NearestNeighbors(n_neighbors=10)
@@ -40,8 +44,8 @@ class OutlierDetection:
     def printer(self, dist):
         self.outliers = np.array(self.outliers)
         plt.subplot(1, 2, 1)
-        plt.scatter(self.X[:, 0], self.X[:, 1])
-        plt.scatter(self.outliers[:, 0], self.outliers[:, 1])
+        plt.scatter(self.X[:, 0], self.X[:, 1],c=self.y)
+        plt.scatter(self.outliers[:, 0], self.outliers[:, 1], c="yellow")
         plt.subplot(1, 2, 2)
         #plt.hist(self.X[:,0],bins=15)
         plt.boxplot(dist, vert=True)
@@ -72,4 +76,4 @@ class OutlierDetection:
         return arr
 
 
-outcome = OutlierDetection()
+outcome = OutlierDetection('Iris_with_outliers.csv',2,4,6)
