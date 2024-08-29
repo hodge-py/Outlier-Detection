@@ -1,16 +1,13 @@
 import numpy as np
 from sklearn.neighbors import NearestNeighbors
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 import pandas as pd
-import math
 
 
 class OutlierDetection:
 
     def __init__(self):
-        sns.set_theme()
         self.outliers = []
         """
         self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
