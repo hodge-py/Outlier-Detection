@@ -16,6 +16,7 @@ class OutlierDetection:
         self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
         self.X = self.X + 20
         """
+
         self.X, self.y = self.datasetSetup()
 
         output, dist = self.main()
@@ -54,7 +55,7 @@ class OutlierDetection:
 
         upperL = percent[2] + 1.5 * (percent[2] - percent[0])
         lowerL = percent[0] - 1.5 * (percent[2] - percent[0])
-        print(upperL, lowerL)
+
         for x in range(len(dist)):
             if dist[x] > upperL:
                 self.outliers += [self.X[x]]
