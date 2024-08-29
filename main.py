@@ -16,19 +16,22 @@ class OutlierDetection:
         self.X, self.y = make_blobs(n_samples=50, n_features=2, centers=3, cluster_std=2, random_state=2)
         self.X = self.X + 20
         """
-        df = pd.read_csv('Iris_with_outliers.csv')
-        df = df.dropna()
-        self.X = df.iloc[:, 2:4].values
-        self.y = df.iloc[:, 6].values
-        # self.X = np.log(self.X)
+        self.X, self.y = self.datasetSetup()
 
         output, dist = self.main()
 
         arr = self.generateArr(dist)
 
-        print(arr)
+        # print(arr)
         self.boxplot(arr)
         self.printer(arr)
+
+    def datasetSetup(self):
+        df = pd.read_csv('Iris_with_outliers.csv')
+        df = df.dropna()
+        X = df.iloc[:, 2:4].values
+        y = df.iloc[:, 6].values
+        return X, y
 
     def main(self):
         nn = NearestNeighbors(n_neighbors=10)
