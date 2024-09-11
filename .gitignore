@@ -162,4 +162,5 @@ cython_debug/
 #.idea/
 
 
-outlierDatasets
+outlierDatasets/ALOI.csv
+outlierDatasets/ALOI.arff
