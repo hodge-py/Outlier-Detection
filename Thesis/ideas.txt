@@ -1,0 +1,1 @@
+compare skew of maximum distance vs median max
