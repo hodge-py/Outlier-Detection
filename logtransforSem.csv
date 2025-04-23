@@ -1,0 +1,8 @@
+,Annthyroid_withoutdupl_norm_07.arff,,Arrhythmia_withoutdupl_norm_46.arff,,Cardiotocography_withoutdupl_norm_22.arff,,HeartDisease_withoutdupl_norm_44.arff,,Hepatitis_withoutdupl_norm_16.arff,,InternetAds_withoutdupl_norm_19.arff,,PageBlocks_withoutdupl_norm_09.arff,,Parkinson_withoutdupl_norm_75.arff,,Pima_withoutdupl_norm_35.arff,,SpamBase_withoutdupl_norm_40.arff,,Stamps_withoutdupl_norm_09.arff,,Wilt_withoutdupl_norm_05.arff,
+,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k
+norm_gen,67.6%,2,76.2%,44,55.7%,69,70.1%,69,78.8%,26,72.2%,14,87.1%,69,73.7%,6,73.7%,68,65.1%,41,91.7%,61,56.2%,2
+t_gen,67.7%,2,76.1%,47,55.6%,69,70.1%,69,78.8%,26,72.2%,14,87.1%,69,73.9%,4,73.7%,68,65.0%,40,91.7%,68,56.1%,3
+laplace_gen,67.6%,2,76.2%,34,55.7%,68,69.7%,69,79.0%,25,72.2%,14,87.2%,69,73.9%,6,73.6%,69,65.0%,46,91.9%,62,56.2%,2
+cauchy_gen,67.6%,2,76.0%,45,55.8%,69,69.9%,68,79.7%,26,72.2%,14,87.1%,69,73.8%,6,73.7%,67,65.0%,40,92.2%,57,56.2%,2
+logistic_gen,67.7%,2,76.1%,47,55.6%,69,69.8%,68,79.0%,26,72.2%,14,87.0%,69,73.8%,6,73.7%,67,65.0%,41,91.8%,68,56.2%,2
+skewnorm_gen,67.7%,2,76.0%,35,55.7%,69,70.1%,68,78.8%,26,72.2%,14,87.1%,69,73.9%,6,73.7%,67,65.0%,46,92.2%,65,56.1%,3
