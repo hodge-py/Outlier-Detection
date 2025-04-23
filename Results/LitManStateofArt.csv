@@ -1,5 +1,6 @@
 ,ALOI_withoutdupl_norm.arff,,Glass_withoutdupl_norm.arff,,Ionosphere_withoutdupl_norm.arff,,KDDCup99_withoutdupl_norm_idf.arff,,Lymphography_withoutdupl_norm_idf.arff,,PenDigits_withoutdupl_norm_v10.arff,,Shuttle_withoutdupl_norm_v10.arff,,Waveform_withoutdupl_norm_v10.arff,,WBC_withoutdupl_norm_v10.arff,,WDBC_withoutdupl_norm_v10.arff,,WPBC_withoutdupl_norm.arff,
-ABOD,76.8%,,84.9%,,92.6%,,77.5%,,97.4%,,95.9%,,31.0%,,64.7%,,93.8%,,92.5%,,47.7%,
-KNN,74.6%,2,87.4%,10,89.6%,4,97.0%,69,100.0%,7,99.1%,11,84.7%,4,78.6%,65,99.7%,24,99.0%,69,53.1%,18
-LOF,81.4%,7,86.7%,13,87.1%,10,67.9%,45,100.0%,47,97.1%,55,84.1%,7,76.5%,69,99.7%,65,99.1%,69,52.7%,34
-COF,80.4%,,85.5%,,85.9%,,55.6%,,99.2%,,92.4%,,35.5%,,68.3%,,76.0%,,94.6%,,47.4%,
+,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k,ROC AUC,k
+ABOD,76.80%,,84.90%,,92.60%,,77.50%,,97.40%,,95.90%,,31.00%,,64.70%,,93.80%,,92.50%,,47.70%,
+KNN,74.60%,2,87.40%,10,89.60%,4,97.00%,69,100.00%,7,99.10%,11,84.70%,4,78.60%,65,99.70%,24,99.00%,69,53.10%,18
+LOF,81.40%,7,86.70%,13,87.10%,10,67.90%,45,100.00%,47,97.10%,55,84.10%,7,76.50%,69,99.70%,65,99.10%,69,52.70%,34
+COF,80.40%,,85.50%,,85.90%,,55.60%,,99.20%,,92.40%,,35.50%,,68.30%,,76.00%,,94.60%,,47.40%,
